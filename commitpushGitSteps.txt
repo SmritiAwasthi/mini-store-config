@@ -1,0 +1,22 @@
+🔄 Step 3: Initialize Git
+git init
+
+🧩 Step 4: Connect to Your GitHub Repo
+git remote add origin https://github.com/SmritiAwasthi/mini-store-config.git
+
+
+If the repo is already connected, you'll get a warning — that's okay.
+
+📝 Step 5: Add and Commit Files
+git add .
+git commit -m "Add initial config files for microservices"
+
+☁️ Step 6: Push to GitHub
+
+Make sure you're on the correct branch (probably main):
+
+git branch -M main
+git push -u origin main
+
+
+You’ll be asked to login — either via token or GitHub CLI (recommended).
