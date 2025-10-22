@@ -2,7 +2,7 @@ package com.product_service.product_service.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.product_service.product_service.entity.Product;
+import com.commonFiles.commonFiles.entity.Product;
 import com.product_service.product_service.repository.ProductRepository;
 import com.product_service.product_service.service.ProductService;
 import jakarta.annotation.PostConstruct;
@@ -66,13 +66,13 @@ public class ProductServiceImpl implements ProductService {
 
         System.out.println("ProductService is called");
         Product savedProduct =productRepository.save(product);
-        try {
-            String productJson = objectMapper.writeValueAsString(product);
-            kafkaTemplate.send("product.created", productJson);
-        }
-        catch(Exception e){
-            System.out.println("Exception in ProductService: "+e.getMessage());
-        }
+//        try {
+//            String productJson = objectMapper.writeValueAsString(product);
+//            kafkaTemplate.send("product.created", productJson);
+//        }
+//        catch(Exception e){
+//            System.out.println("Exception in ProductService: "+e.getMessage());
+//        }
         return product;
     }
     @Override

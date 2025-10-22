@@ -1,7 +1,7 @@
 package com.product_service.product_service.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.product_service.product_service.entity.Product;
+import com.commonFiles.commonFiles.entity.Product;
 
 import java.util.List;
 

@@ -13,7 +13,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
     private final Key SECRET_KEY = new SecretKeySpec(
-            "mysecretkey".getBytes(StandardCharsets.UTF_8),
+            "myverylongsecretkeythatisatleast32chars".getBytes(StandardCharsets.UTF_8),
             SignatureAlgorithm.HS256.getJcaName()
     );
 

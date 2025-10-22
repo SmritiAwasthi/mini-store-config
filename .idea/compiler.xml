@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Api-server" />
-        <module name="auth-server" />
         <module name="payment-service" />
+        <module name="commonFiles" />
+        <module name="auth-server" />
       </profile>
       <profile name="Annotation profile for notification-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -30,6 +31,7 @@
     <bytecodeTargetLevel>
       <module name="Api-server" target="17" />
       <module name="auth-server" target="17" />
+      <module name="commonFiles" target="17" />
       <module name="config-server" target="17" />
       <module name="discovery-server" target="17" />
       <module name="inventory-service" target="17" />

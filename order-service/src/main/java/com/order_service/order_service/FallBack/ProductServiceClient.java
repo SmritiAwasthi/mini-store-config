@@ -1,11 +1,12 @@
 package com.order_service.order_service.FallBack;
 
-import com.product_service.product_service.entity.Product;
-import com.product_service.product_service.repository.ProductRepository;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.retry.annotation.Retry;
+import com.commonFiles.commonFiles.entity.Product;
+//import com.product_service.product_service.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+//import org.springframework.retry.annotation.CircuitBreaker;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -19,14 +20,14 @@ public class ProductServiceClient{
 
     @Autowired
     private  WebClient webClient;
-   @Autowired
-    private ProductRepository productRepository;
+//   @Autowired
+//    private ProductRepository productRepository;
 
     @Retry(name = "productService", fallbackMethod = "fallbackGetProductById")
    @CircuitBreaker(name = "productService", fallbackMethod = "fallbackGetProductById")
     public Mono<Product> getProductById(Long id){
         System.out.println("retries started" );
-        return webClient.get().uri("http://localhost:8886/api/products/{id}",id).retrieve().
+        return webClient.get().uri("http://localhost:8886/products/{id}",id).retrieve().
                 bodyToMono(Product.class);
     }
 

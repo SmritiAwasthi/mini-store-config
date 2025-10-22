@@ -32,6 +32,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>com.commonFiles</groupId>
+			<artifactId>commonFiles</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -91,10 +96,26 @@
             <scope>compile</scope>
         </dependency>
 		<!-- Resilience4j Circuit Breaker -->
+		<!-- Resilience4j Spring Boot Starter -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-spring-boot3</artifactId>
+			<version>2.2.0</version>
 		</dependency>
+
+		<!-- Explicit Circuit Breaker -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-circuitbreaker</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-retry</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+
 		<!-- Spring Boot Starter AOP -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

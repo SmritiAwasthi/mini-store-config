@@ -27,6 +27,7 @@ public class SecurityConfig {
             .exceptionHandling(ex -> ex.authenticationEntryPoint(new RestAuthenticationEntryPoint()))
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/actuator/**","/health","/info").permitAll()
+                    //.requestMatchers("/api/v1/payments").permitAll()//temporarily
                     .requestMatchers("/api/v1/payments").authenticated()
                     .anyRequest().permitAll()
             )

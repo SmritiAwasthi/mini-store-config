@@ -6,10 +6,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class OrderServiceClient {
-    private final WebClient webClient = WebClient.create("http://orders-service:8080");
+    private final WebClient webClient = WebClient.create("http://localhost:8082");
 
     public boolean orderExists(String orderId) {
         try {
+            System.out.println("OrderServiceClient");
             Mono<Boolean> mono = webClient.get()
                     .uri("/orders/{id}/exists", orderId)
                     .retrieve()

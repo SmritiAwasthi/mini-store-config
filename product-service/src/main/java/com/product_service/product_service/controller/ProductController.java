@@ -1,7 +1,8 @@
 package com.product_service.product_service.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.product_service.product_service.entity.Product;
+//import com.product_service.product_service.entity.Product;
+import com.commonFiles.commonFiles.entity.Product;
 import com.product_service.product_service.service.ProductService;
 
 import lombok.RequiredArgsConstructor;

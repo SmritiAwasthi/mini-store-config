@@ -3,8 +3,9 @@ package com.order_service.order_service.controller;
 import com.order_service.order_service.FallBack.ProductServiceClient;
 import com.order_service.order_service.entity.Order;
 import com.order_service.order_service.service.OrderService;
-import com.product_service.product_service.entity.Product;
-import com.product_service.product_service.repository.ProductRepository;
+//import com.product_service.product_service.entity.Product;
+//import com.product_service.product_service.repository.ProductRepository;
+import com.commonFiles.commonFiles.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
@@ -24,18 +25,14 @@ public class OrderController {
 
 
     @Autowired private  OrderService orderService;
-    @Autowired
-    private ProductRepository productRepository;
+//    @Autowired
+//    private ProductRepository productRepository;
     @Autowired
     private  ProductServiceClient productServiceClient;
 
     @PostMapping("/placeOrder")
     public ResponseEntity<?> createOrder(@RequestBody Order order) {
         try {
-//            System.out.println("hii");
-//            order.getItems().stream().forEach(item->
-//                    productRepository.findById(Long.parseLong(item.getProductId())).orElseThrow(() -> new RuntimeException("Product not found with id: " + item.getProductId())));
-//            System.out.println("Creating order is called" );
             order.getItems().forEach(item -> {
                 System.out.println("retries order is completed" );
                 Product product = productServiceClient.getProductById(Long.parseLong(item.getProductId())).block();//block()--this waits
@@ -57,4 +54,10 @@ public class OrderController {
         Order orderById = orderService.getOrderById(id);
         return ResponseEntity.of(orderById!=null?java.util.Optional.of(orderById):java.util.Optional.empty());
     }
+
+
+    @GetMapping("/{id}/exists")
+    public boolean checkOrderExists(@PathVariable Long id) {
+        return orderService.checkOrderExists(id);
+           }
 }

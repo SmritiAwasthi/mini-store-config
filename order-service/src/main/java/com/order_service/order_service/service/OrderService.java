@@ -35,7 +35,6 @@ public class OrderService {
 
     order.setItems(order.getItems());
         Order savedOrder = orderRepository.save(order);
-
         // Publish order event to Kafka
      /*   String orderJson = objectMapper.writeValueAsString(order);
         kafkaTemplate.send("order.created", orderJson);*/
@@ -45,5 +44,8 @@ public class OrderService {
 
     public Order getOrderById(Long id) {
         return orderRepository.getReferenceById(id);
+    }
+    public boolean checkOrderExists(Long id) {
+        return orderRepository.existsById(id);
     }
 }

@@ -4,6 +4,7 @@ spring:
     name: Api-server
   profiles:
     active: dev
+
   cloud:
     # Load Balancer Configuration
     loadbalancer:
@@ -33,18 +34,18 @@ spring:
           routes:
             # Basic routes - minimal configuration for testing
             - id: product-service
-              uri: http://localhost:8081
+              uri: http://localhost:9091
               predicates:
                 - Path=/products/**
-              filters:
-                - StripPrefix=1
+#              filters:
+#                - StripPrefix=1
             
             - id: order-service
               uri: http://localhost:8082
               predicates:
                 - Path=/orders/**
-              filters:
-                - StripPrefix=1
+             # filters:
+              #  - StripPrefix=1
             
             # Health check route for the gateway itself
             - id: gateway-health
@@ -57,8 +58,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
+          secret-key: myverylongsecretkeythatisatleast32chars
           # For development, you can use a local auth server or public key
-          issuer-uri: http://localhost:9999/auth/realms/ministore
+         # issuer-uri: http://localhost:9999/auth/realms/ministore
           # Alternative: Use JWK Set URI directly
           # jwk-set-uri: http://localhost:9999/auth/realms/ministore/protocol/openid_connect/certs
 
